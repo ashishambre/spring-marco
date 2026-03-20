@@ -1,4 +1,6 @@
-package com.aambre;
+package com.aambre.pdfinvoice.service;
+
+import com.aambre.pdfinvoice.model.Invoice;
 
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;

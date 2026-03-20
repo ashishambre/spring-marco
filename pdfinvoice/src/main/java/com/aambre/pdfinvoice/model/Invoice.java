@@ -1,4 +1,4 @@
-package com.aambre;
+package com.aambre.pdfinvoice.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

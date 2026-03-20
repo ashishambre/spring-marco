@@ -7,11 +7,17 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class Application {
 
   /**
-   * Instead of creating services in each Servlet class, we moved it to a common class
-   * public static final effectively makes it Singleton
-   * Now any other class can access and use the same objects
+   * InvoiceService needed to call Application, to get the instance of UserService.
+   * It needed to know about UserService and where it can get UserService.
+
+   * Instead of actively getting dependencies from Application class, UserService is now wired with InvoiceService
+
+   * What id even UserService had other dependencies? More interdependent services. Then putting everything into one
+   * Application class will get cumbersome.
+
+   * THIS IS EXACTLY WHERE Spring Framework comes in: to REPLACE that Application class
    */
-  public static final InvoiceService invoiceService = new InvoiceService();
-  public static final ObjectMapper objectMapper = new ObjectMapper();
   public static final UserService userService = new UserService();
+  public static final InvoiceService invoiceService = new InvoiceService(userService);
+  public static final ObjectMapper objectMapper = new ObjectMapper();
 }

@@ -2,8 +2,6 @@ package com.aambre.pdfinvoice.web;
 
 import com.aambre.pdfinvoice.context.Application;
 import com.aambre.pdfinvoice.model.Invoice;
-import com.aambre.pdfinvoice.service.InvoiceService;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;

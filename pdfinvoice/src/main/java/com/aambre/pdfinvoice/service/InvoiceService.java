@@ -1,5 +1,6 @@
 package com.aambre.pdfinvoice.service;
 
+import com.aambre.pdfinvoice.context.Application;
 import com.aambre.pdfinvoice.model.Invoice;
 import com.aambre.pdfinvoice.model.User;
 
@@ -16,7 +17,7 @@ public class InvoiceService {
 
   public Invoice create(String userId, Integer amount) {
 
-    User user = new UserService().findById(userId);
+    User user = Application.userService.findById(userId);
     if(user == null) {
       throw new IllegalStateException("User not found");
     }

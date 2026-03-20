@@ -1,6 +1,7 @@
 package com.aambre.pdfinvoice.context;
 
 import com.aambre.pdfinvoice.service.InvoiceService;
+import com.aambre.pdfinvoice.service.UserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class Application {
@@ -12,4 +13,5 @@ public class Application {
    */
   public static final InvoiceService invoiceService = new InvoiceService();
   public static final ObjectMapper objectMapper = new ObjectMapper();
+  public static final UserService userService = new UserService();
 }

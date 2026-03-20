@@ -29,6 +29,13 @@
             <artifactId>jackson-databind</artifactId>
             <version>2.20.1</version>
         </dependency>
+
+        <!-- Adding Spring Framework to the project -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>6.2.15</version>
+        </dependency>
     </dependencies>
 
     <!--
@@ -44,17 +51,6 @@
                 <version>3.14.1</version>
             </plugin>
 
-            <!--
-            Problem:
-                Even if you set MANIFEST properly with maven-jar-plugin, there is one more problem -
-                Maven will by default only put our own source code into .jar file and NOT the external libs
-
-            Solution:
-                maven-shade-plugin helps to create uber jar.
-                It also allows you to set the main class.
-
-                So shade plugin can be used instead of maven-jar-plugin
-            -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>

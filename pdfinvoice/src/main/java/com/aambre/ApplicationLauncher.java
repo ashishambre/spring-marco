@@ -25,7 +25,7 @@ public class ApplicationLauncher {
     Context ctx = tomcat.addContext("", null);
 
     // Add your Servlet to Tomcat
-    Wrapper servlet = Tomcat.addServlet(ctx, "myFirstServlet", new MyFirstServlet());
+    Wrapper servlet = Tomcat.addServlet(ctx, "pdfInvoiceServlet", new PdfInvoiceServlet());
 
     /*
     * Starting up Tomcat does not automatically load your Servlet. It is initialized on the very first HTTP request

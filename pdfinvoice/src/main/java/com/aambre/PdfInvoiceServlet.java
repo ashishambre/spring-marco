@@ -1,19 +1,22 @@
 package com.aambre;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.util.List;
 
 public class PdfInvoiceServlet extends HttpServlet {
+
+  private InvoiceService invoiceService = new InvoiceService();
+  private ObjectMapper objectMapper = new ObjectMapper();
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-    // Servlet will now check the request URI and decide whether to show HTML or invoices JSON
-    
     if(req.getRequestURI().equalsIgnoreCase("/")) {
       resp.setContentType("text/html; charset=UTF-8");
       resp.getWriter().print(
@@ -25,7 +28,25 @@ public class PdfInvoiceServlet extends HttpServlet {
                       "</html>" );
     } else if(req.getRequestURI().equalsIgnoreCase("/invoices")) {
       resp.setContentType("application/json; charset=UTF-8");
-      resp.getWriter().print("[]");
+      List<Invoice> invoices = invoiceService.findAll();
+      resp.getWriter().print(objectMapper.writeValueAsString(invoices));
+    }
+  }
+
+  @Override
+  protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    if(req.getRequestURI().equalsIgnoreCase("/invoices")) {
+
+      String userId = req.getParameter("userId");
+      Integer amount = Integer.valueOf(req.getParameter("amount"));
+
+      Invoice invoice = invoiceService.create(userId, amount);
+
+      resp.setContentType("application/json; charset=UTF-8");
+      String json = objectMapper.writeValueAsString(invoice);
+      resp.getWriter().print(json);
+    } else {
+      resp.setStatus(HttpServletResponse.SC_NOT_FOUND);
     }
   }
 }

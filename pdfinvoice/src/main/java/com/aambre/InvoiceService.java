@@ -1,0 +1,20 @@
+package com.aambre;
+
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
+
+public class InvoiceService {
+
+  List<Invoice> invoices = new CopyOnWriteArrayList<>();
+
+  public List<Invoice> findAll() {
+    return invoices;
+  }
+
+  public Invoice create(String userId, Integer amount) {
+    // TODO real pdf creation and storing it on network server
+    Invoice invoice = new Invoice(userId, "https://www.rd.usda.gov/sites/default/files/pdf-sample_0.pdf", amount);
+    invoices.add(invoice);
+    return invoice;
+  }
+}

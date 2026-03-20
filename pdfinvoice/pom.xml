@@ -40,26 +40,34 @@
 
             <!--
             Problem:
-                mvn package
-                This creates an executable jar in target directory.
-
-                java -jar target/pdfinvoice-1.0-SNAPSHOT.jar
-                Java does not know which class to run.
+                Even if you set MANIFEST properly with maven-jar-plugin, there is one more problem -
+                Maven will by default only put our own source code into .jar file and NOT the external libs
 
             Solution:
-                maven-jar-plugin
+                maven-shade-plugin helps to create uber jar.
+                It also allows you to set the main class.
+
+                So shade plugin can be used instead of maven-jar-plugin
             -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>3.4.2</version>
-                <configuration>
-                    <archive>
-                        <manifest>
-                            <mainClass>com.aambre.ApplicationLauncher</mainClass>
-                        </manifest>
-                    </archive>
-                </configuration>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.6.0</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <transformers>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <mainClass>com.aambre.ApplicationLauncher</mainClass>
+                                </transformer>
+                            </transformers>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

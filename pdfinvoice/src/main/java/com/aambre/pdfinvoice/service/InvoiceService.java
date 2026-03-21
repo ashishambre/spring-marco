@@ -32,4 +32,9 @@ public class InvoiceService {
     invoices.add(invoice);
     return invoice;
   }
+
+  // Added for testing Prototype Scope issue
+  public UserService getUserService() {
+    return userService;
+  }
 }

@@ -1,12 +1,13 @@
 package com.aambre.pdfinvoice.context;
 
+import com.aambre.ApplicationLauncher;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ComponentScan
+@ComponentScan(basePackageClasses = ApplicationLauncher.class)
 public class PdfInvoiceApplicationConfiguration {
 
   @Bean

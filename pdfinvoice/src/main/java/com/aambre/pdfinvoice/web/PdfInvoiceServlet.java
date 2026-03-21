@@ -36,10 +36,13 @@ public class PdfInvoiceServlet extends HttpServlet {
     this.invoiceService = ctx.getBean(InvoiceService.class);
     this.objectMapper = ctx.getBean(ObjectMapper.class);
 
-    /**
-     * Spring reads in your @Configuration class and is smart enough to construct your @beans/services,
-     * that it can give back to you whenever you call ctx.getBean(someClass).
+    /*
+     * By default, Spring has singleton bean scope
+     * Single instance of each bean
      */
+    System.out.println(ctx.getBean(UserService.class)); // c.a.p.s.UserService@162be91c
+    System.out.println(ctx.getBean(UserService.class)); // c.a.p.s.UserService@162be91c
+    System.out.println(ctx.getBean(UserService.class)); // c.a.p.s.UserService@162be91c
   }
 
   @Override

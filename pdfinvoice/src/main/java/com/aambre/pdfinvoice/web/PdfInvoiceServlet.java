@@ -20,14 +20,6 @@ public class PdfInvoiceServlet extends HttpServlet {
   private InvoiceService invoiceService;
   private ObjectMapper objectMapper;
 
-  /**
-   * Every HTTPServlet has an init() method which you can override to do something whenever the servlet gets started.
-
-   * Since we used annotation based configuration -> AnnotationConfigApplicationContext
-   * If we use Spring XML configuration -> ClasspathXMLApplicationContext
-
-   * @throws ServletException
-   */
   @Override
   public void init() throws ServletException {
     AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(PdfInvoiceApplicationConfiguration.class);
@@ -35,19 +27,6 @@ public class PdfInvoiceServlet extends HttpServlet {
     this.userService = ctx.getBean(UserService.class);
     this.invoiceService = ctx.getBean(InvoiceService.class);
     this.objectMapper = ctx.getBean(ObjectMapper.class);
-
-    /*
-     * By default, Spring has singleton bean scope
-     * Single instance of each bean
-     */
-    System.out.println(ctx.getBean(UserService.class)); // c.a.p.s.UserService@21d8bcbe
-    System.out.println(ctx.getBean(UserService.class)); // c.a.p.s.UserService@5be067de
-    System.out.println(ctx.getBean(UserService.class)); // c.a.p.s.UserService@7383eae2
-
-    System.out.println("\nUserService accessed through InvoiceService: ");
-    System.out.println(ctx.getBean(InvoiceService.class).getUserService()); // c.a.p.s.UserService@18245eb0
-    System.out.println(ctx.getBean(InvoiceService.class).getUserService()); // c.a.p.s.UserService@18245eb0
-    System.out.println(ctx.getBean(InvoiceService.class).getUserService()); // c.a.p.s.UserService@18245eb0
   }
 
   @Override

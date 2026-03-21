@@ -11,12 +11,8 @@ import java.util.concurrent.CopyOnWriteArrayList;
 @Component
 public class InvoiceService {
 
-  private final UserService userService;
-
   @Autowired
-  public InvoiceService(UserService userService) {
-    this.userService = userService;
-  }
+  private UserService userService;
 
   List<Invoice> invoices = new CopyOnWriteArrayList<>();
 

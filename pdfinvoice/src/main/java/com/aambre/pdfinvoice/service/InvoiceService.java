@@ -11,10 +11,14 @@ import java.util.concurrent.CopyOnWriteArrayList;
 @Component
 public class InvoiceService {
 
-  @Autowired
   private UserService userService;
 
   List<Invoice> invoices = new CopyOnWriteArrayList<>();
+
+  @Autowired
+  public void setUserService(UserService userService) {
+    this.userService = userService;
+  }
 
   public List<Invoice> findAll() {
     return invoices;

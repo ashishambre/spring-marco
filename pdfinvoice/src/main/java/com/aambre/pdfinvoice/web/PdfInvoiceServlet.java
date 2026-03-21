@@ -40,9 +40,9 @@ public class PdfInvoiceServlet extends HttpServlet {
      * By default, Spring has singleton bean scope
      * Single instance of each bean
      */
-    System.out.println(ctx.getBean(UserService.class)); // c.a.p.s.UserService@162be91c
-    System.out.println(ctx.getBean(UserService.class)); // c.a.p.s.UserService@162be91c
-    System.out.println(ctx.getBean(UserService.class)); // c.a.p.s.UserService@162be91c
+    System.out.println(ctx.getBean(UserService.class));
+    System.out.println(ctx.getBean(UserService.class));
+    System.out.println(ctx.getBean(UserService.class));
   }
 
   @Override

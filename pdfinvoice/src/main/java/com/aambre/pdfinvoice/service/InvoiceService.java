@@ -2,6 +2,7 @@ package com.aambre.pdfinvoice.service;
 
 import com.aambre.pdfinvoice.model.Invoice;
 import com.aambre.pdfinvoice.model.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -12,6 +13,7 @@ public class InvoiceService {
 
   private final UserService userService;
 
+  @Autowired
   public InvoiceService(UserService userService) {
     this.userService = userService;
   }
